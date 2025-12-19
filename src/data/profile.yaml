@@ -1,0 +1,86 @@
+# ============================================
+# OpenProfile 配置文件
+# 编辑此文件来自定义你的个人主页
+# ============================================
+
+# 基本信息
+name: 张三
+title: 全栈开发者 & 开源爱好者
+avatar: https://api.dicebear.com/7.x/avataaars/svg?seed=openprofile
+bio: |
+  热爱开源技术，专注于 Web 开发和 AI 应用。
+  相信技术可以改变世界，正在用代码创造价值。
+
+# 主题设置: dark 或 light
+theme: dark
+accentColor: "#6366f1"
+
+# 布局设置
+layout:
+  columns: 4
+  gap: 16
+
+# 卡片配置
+cards:
+  # 自我介绍
+  - id: intro
+    type: intro
+    size: 2x2
+    title: 👋 你好！
+    content: |
+      我是一名全栈开发者，
+      热爱构建美观且实用的产品。
+      
+      目前专注于 React、TypeScript 和 AI 应用开发。
+
+  # 社交链接
+  - id: github
+    type: social
+    size: 1x1
+    platform: github
+    url: https://github.com/username
+    username: username
+
+  - id: twitter
+    type: social
+    size: 1x1
+    platform: twitter
+    url: https://twitter.com/username
+    username: "@username"
+
+  - id: email
+    type: social
+    size: 1x1
+    platform: email
+    url: mailto:hello@example.com
+    username: hello@example.com
+
+  - id: website
+    type: social
+    size: 1x1
+    platform: website
+    url: https://example.com
+    username: example.com
+
+  # 项目展示图片
+  - id: project1
+    type: image
+    size: 2x2
+    src: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80
+    alt: 项目截图
+
+  # 自定义链接
+  - id: blog
+    type: link
+    size: 2x1
+    icon: book-open
+    label: 阅读我的博客
+    url: https://blog.example.com
+    color: "#10b981"
+
+  # 文字卡片
+  - id: quote
+    type: text
+    size: 2x1
+    content: "代码是写给人看的，顺便能在机器上运行。"
+    align: center
