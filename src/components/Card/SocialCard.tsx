@@ -42,21 +42,29 @@ export function SocialCard({ card }: SocialCardProps) {
             onClick={() => window.open(card.url, '_blank')}
         >
             <div
-                className="h-full p-4 flex flex-col items-center justify-center gap-2 transition-colors"
+                className="h-full p-6 flex flex-col items-center justify-center gap-4 transition-all"
                 style={{
-                    backgroundColor: `${config.color}15`,
+                    backgroundColor: `${config.color}08`,
                 }}
             >
                 <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: config.color }}
+                    className="w-16 h-16 rounded-3xl flex items-center justify-center transition-all duration-500 group-hover:rounded-2xl group-hover:rotate-6 shadow-xl"
+                    style={{
+                        backgroundColor: config.color,
+                        boxShadow: `0 10px 20px -5px ${config.color}60`
+                    }}
                 >
-                    <Icon className="w-6 h-6 text-white" />
+                    <Icon className="w-8 h-8 text-white" />
                 </div>
                 {card.username && (
-                    <span className="text-sm text-[var(--text-secondary)] truncate max-w-full px-2">
-                        {card.username}
-                    </span>
+                    <div className="flex flex-col items-center gap-0.5 max-w-full">
+                        <span className="text-sm font-bold text-[var(--text-primary)] truncate max-w-full px-2">
+                            {config.label}
+                        </span>
+                        <span className="text-xs text-[var(--text-secondary)] truncate max-w-full px-2 opacity-70">
+                            {card.username}
+                        </span>
+                    </div>
                 )}
             </div>
         </Card>

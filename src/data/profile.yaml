@@ -7,9 +7,7 @@
 name: 张三
 title: 全栈开发者 & 开源爱好者
 avatar: https://api.dicebear.com/7.x/avataaars/svg?seed=openprofile
-bio: |
-  热爱开源技术，专注于 Web 开发和 AI 应用。
-  相信技术可以改变世界，正在用代码创造价值。
+bio: ""
 
 # 主题设置: dark 或 light
 theme: dark
@@ -28,10 +26,9 @@ cards:
     size: 2x2
     title: 👋 你好！
     content: |
-      我是一名全栈开发者，
-      热爱构建美观且实用的产品。
-      
-      目前专注于 React、TypeScript 和 AI 应用开发。
+      我是张三，一名全栈开发者，热爱构建美观且实用的产品。
+
+      我专注于 Web 开发和 AI 应用，相信技术可以改变世界，正在用代码创造价值。目前深耕于 React 和 TypeScript 生态。
 
   # 社交链接
   - id: github

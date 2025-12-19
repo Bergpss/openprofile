@@ -9,13 +9,11 @@ interface LinkCardProps {
 
 export function LinkCard({ card }: LinkCardProps) {
     // Dynamically get icon from lucide-react
-    const IconComponent = card.icon
-        ? (Icons as Record<string, React.ComponentType<{ className?: string }>>)[
-        card.icon.split('-').map((s, i) =>
-            i === 0 ? s.charAt(0).toUpperCase() + s.slice(1) : s.charAt(0).toUpperCase() + s.slice(1)
-        ).join('')
-        ] || ExternalLink
-        : ExternalLink
+    const iconName = card.icon
+        ? card.icon.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')
+        : 'ExternalLink'
+
+    const IconComponent = (Icons as any)[iconName] || Icons.ExternalLink
 
     return (
         <Card
@@ -23,19 +21,29 @@ export function LinkCard({ card }: LinkCardProps) {
             onClick={() => window.open(card.url, '_blank')}
         >
             <div
-                className="h-full p-5 flex items-center gap-4"
-                style={{ backgroundColor: card.color ? `${card.color}15` : undefined }}
+                className="h-full p-6 flex items-center gap-5 transition-colors"
+                style={{ backgroundColor: card.color ? `${card.color}10` : undefined }}
             >
                 <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: card.color || 'var(--accent-color)' }}
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg transition-transform group-hover:scale-110"
+                    style={{
+                        backgroundColor: card.color || 'var(--accent-color)',
+                        boxShadow: card.color ? `0 8px 16px -4px ${card.color}40` : undefined
+                    }}
                 >
-                    <IconComponent className="w-6 h-6 text-white" />
+                    <IconComponent className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-lg font-medium text-[var(--text-primary)] flex-1">
-                    {card.label}
-                </span>
-                <ExternalLink className="w-5 h-5 text-[var(--text-secondary)]" />
+                <div className="flex flex-col flex-1 overflow-hidden">
+                    <span className="text-xl font-bold text-[var(--text-primary)] truncate">
+                        {card.label}
+                    </span>
+                    <span className="text-sm text-[var(--text-secondary)] truncate opacity-60">
+                        {card.url.replace(/^https?:\/\//, '')}
+                    </span>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ExternalLink className="w-4 h-4 text-[var(--text-secondary)]" />
+                </div>
             </div>
         </Card>
     )

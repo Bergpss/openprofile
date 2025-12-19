@@ -33,20 +33,35 @@ export function Card({ children, size, className = '', onClick }: CardProps) {
     return (
         <motion.div
             className={`
-        ${sizeClasses[size]}
-        ${aspectClasses[size]}
-        bg-[var(--bg-card)]
-        border border-[var(--border-color)]
-        rounded-[var(--card-radius)]
-        overflow-hidden
-        cursor-pointer
-        ${className}
-      `}
-            whileHover={{ scale: 1.02, y: -4 }}
+                ${sizeClasses[size]}
+                ${aspectClasses[size]}
+                bg-[var(--bg-card)]
+                border border-[var(--border-color)]
+                rounded-[var(--card-radius)]
+                overflow-hidden
+                cursor-pointer
+                glass
+                group
+                relative
+                ${className}
+            `}
+            whileHover={{
+                scale: 1.01,
+                y: -4,
+                backgroundColor: 'var(--bg-card-hover)',
+                borderColor: 'rgba(99, 102, 241, 0.4)'
+            }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 25,
+            }}
             onClick={onClick}
         >
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             {children}
         </motion.div>
     )

@@ -74,26 +74,33 @@ function App() {
     }
 
     return (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-                <ProfileHeader profile={profile} />
+        <div className="min-h-screen w-full flex flex-col items-center py-16 overflow-x-hidden">
+            {/* Main Wrapper with responsive padding and max-width */}
+            <div className="w-full max-w-6xl px-6 sm:px-12 lg:px-16 flex flex-col items-center">
+                <div className="w-full flex flex-col items-center">
+                    <ProfileHeader profile={profile} />
+                </div>
 
-                <BentoGrid
-                    columns={profile.layout?.columns || 4}
-                    gap={profile.layout?.gap || 16}
-                >
-                    {profile.cards.map(renderCard)}
-                </BentoGrid>
+                <div className="w-full">
+                    <BentoGrid
+                        columns={profile.layout?.columns || 4}
+                        gap={profile.layout?.gap || 24}
+                    >
+                        {profile.cards.map(renderCard)}
+                    </BentoGrid>
+                </div>
 
                 {/* Footer */}
-                <footer className="mt-16 text-center text-sm text-[var(--text-secondary)]">
-                    <p>
-                        Built with{' '}
+                <footer className="mt-24 pb-12 text-center text-sm">
+                    <p className="text-[var(--text-secondary)] font-medium">
+                        &copy; {new Date().getFullYear()} {profile.name}.
+                        <span className="mx-2 opacity-30">|</span>
+                        Powered by{' '}
                         <a
                             href="https://github.com/username/openprofile"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[var(--accent-color)] hover:underline"
+                            className="text-[var(--accent-color)] hover:underline decoration-2 underline-offset-4"
                         >
                             OpenProfile
                         </a>
